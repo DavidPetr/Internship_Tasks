@@ -7,6 +7,17 @@ SELECT	stud_num,
 FROM Students
 WHERE university='AUA' and month(bdate)=9
 */
+/*2
+SELECT 
+		students.Stud_Num,
+		name,
+		surname,
+		subject,
+		mark
+FROM students
+INNER JOIN Exams ON students.stud_num=exams.stud_num
+WHERE university='YSU' AND mark=20
+*/
 /*3
 SELECT	subject,
 		count(stud_num)

@@ -9,6 +9,16 @@ WHERE faculty='IAM' and
 						WHERE mark<8		
 					)
 */
+/*2
+SELECT 
+		students.Stud_Num,
+		name,
+		surname,
+		mark
+FROM students
+INNER JOIN Exams ON students.stud_num=exams.stud_num
+WHERE faculty='IAM' AND mark<8
+*/
 /*3
 SELECT	name,
 		surname,

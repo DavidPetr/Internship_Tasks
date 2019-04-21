@@ -3,6 +3,17 @@ SELECT *
 FROM [University].[dbo].[Students]
 WHERE bdate between '1999-01-01' and '2001-01-01' and  name like 'A%'
 */
+/*2
+SELECT 
+		students.Stud_Num,
+		name,
+		surname,
+		subject,
+		mark
+FROM students
+INNER JOIN exams ON students.stud_num=exams.stud_num
+WHERE mark<8
+*/
 /*3
 SELECT	Stud_num,
 		university

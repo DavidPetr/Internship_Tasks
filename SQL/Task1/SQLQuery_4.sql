@@ -10,6 +10,18 @@ WHERE faculty='IAM' and university='YSU' and
 						HAVING max(mark)<8		
 					)
 */
+/*2
+SELECT 
+		students.Stud_Num,
+		name,
+		surname,
+		subject,
+		mark,
+		edate
+FROM exams
+INNER JOIN students ON students.stud_num=exams.stud_num
+WHERE subject='Compiling' AND course=3 AND faculty='IAM' 
+*/
 /*3
 SELECT	Stud_Num
 FROM Students
