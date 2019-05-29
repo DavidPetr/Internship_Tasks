@@ -7,16 +7,16 @@ using SPAntiVirus = std::shared_ptr<AntiVirus>;
 
 int main(int argc,char** argv)
 {
-	SPAntiVirus pBasic{ new Basic() };
-	pBasic->ProtectionLevel();
+	SPAntiVirus spBasic{ new Basic() };
+	spBasic->ProtectionLevel();
 	std::cout << std::endl;
 
-	SPAntiVirus pAdvanced{ new AdvancedAntiVirus(*pBasic) };
-	pAdvanced->ProtectionLevel();
+	SPAntiVirus spAdvanced{ new AdvancedAntiVirus(*spBasic) };
+	spAdvanced->ProtectionLevel();
 	std::cout << std::endl;
 
-	SPAntiVirus pPremium{ new PremiumAntiVirus(*pAdvanced) };
-	pPremium->ProtectionLevel();
+	SPAntiVirus spPremium{ new PremiumAntiVirus(*spAdvanced) };
+	spPremium->ProtectionLevel();
 	std::cout << std::endl;
 
 	getchar();
