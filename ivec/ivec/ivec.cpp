@@ -8,34 +8,23 @@ int nearest_power_of_two_integer(int x)
 	return i;
 }
 
-ivec::ivec(int from, int to)
+ivec::ivec(int size, int value)
 {
-	const int n = std::abs(to - from);
-	
-
-	this->_capacity = nearest_power_of_two_integer(n);
-	this->_vector = new int[this->_capacity];
-	this->_size = n;
-	
-	int j = 0;
-	if (n != 0)
+	if (size == 0)
 	{
-		if (from < to)
+		this->_capacity = this->_size = 0;
+		return;
+	}
+	else
+	{
+		this->_capacity = nearest_power_of_two_integer(size);
+		this->_vector = new int[this->_capacity];
+
+		while (this->_size < size)
 		{
-			for (int i = from; i < to; ++i)
-			{
-				this->_vector[j++] = i;
-			}
-		}
-		else
-		{
-			for (int i = from; i > to; --i)
-			{
-				this->_vector[j++] = i;
-			}
+			this->push_back(value);
 		}
 	}
-	
 }
 
 ivec::ivec(const ivec & vec)
@@ -84,6 +73,43 @@ ivec & ivec::operator=(const ivec & vec)
 	return *this;
 }
 
+void ivec::reserve(int n)
+{
+	if (n > this->_capacity)
+	{
+		int capacity = nearest_power_of_two_integer(n);
+		int size = this->_size;
+
+		int* vec = new int[capacity];
+		for (int i = 0; i < this->_size; ++i)
+		{
+			vec[i] = this->_vector[i];
+		}		
+		this->clear();		
+		this->_vector = vec;
+		this->_size = size;
+		this->_capacity = capacity;
+	}
+}
+
+void ivec::resize(int n, int val)
+{
+	if (n == 0)
+	{
+		this->clear();
+		return;
+	}
+	else if (n < this->_size)
+	{
+		this->_size = n;
+		return;
+	}
+	while (n > this->_size)
+	{
+		this->push_back(val);
+	}
+}
+
 void ivec::push_back(int val)
 {
 	if (this->_size < this->_capacity)
@@ -93,15 +119,19 @@ void ivec::push_back(int val)
 	}
 	else
 	{
+		int current_size = this->_size;
+		if (this->_size == 0)
+		{
+			this->_size = 2;
+		}
 		int *temp = new int[this->_size * 2];
 		
 		int i;
-		for (i = 0; i < this->_size; ++i)
+		for (i = 0; i < current_size; ++i)
 		{
 			temp[i] = this->_vector[i];
 		}
 		temp[i] = val;
-		int current_size = this->_size;
 
 		this->clear();
 		this->_vector = temp;
@@ -168,7 +198,11 @@ void ivec::insert(iterator it, int val)
 	{
 		throw std::logic_error("Trying insert null iterator!!!");
 	}
-	if (this->_size < this->_capacity)
+	if (it == this->end())
+	{
+		return this->push_back(val);
+	}
+	else if (this->_size < this->_capacity)
 	{
 		int i;
 		for (i = this->_size; i > 0; --i)
@@ -185,10 +219,15 @@ void ivec::insert(iterator it, int val)
 	else
 	{
 		int *temp = new int[this->_size * 2];
+		int position = -1;
 
 		for (int i = 0; i < this->_size; ++i)
 		{
 			temp[i] = this->_vector[i];
+			if (&this->_vector[i] == it)
+			{
+				position = i;
+			}
 		}
 		int current_size = this->_size;
 
@@ -200,7 +239,7 @@ void ivec::insert(iterator it, int val)
 		for (int i = this->_size; i > 0; --i)
 		{
 			this->_vector[i] = this->_vector[i - 1];
-			if (&this->_vector[i - 1] == it)
+			if (i - 1 == position)
 			{
 				this->_vector[i - 1] = val;
 				break;
@@ -242,12 +281,26 @@ int ivec::capacity() const
 
 int & ivec::back() const
 {
-	return this->_vector[this->_size - 1];
+	if (this->_size > 0)
+	{
+		return this->_vector[this->_size - 1];
+	}
+	else
+	{
+		throw std::logic_error("Trying access to empty object!!!");
+	}
 }
 
 int & ivec::front() const
 {
-	return this->_vector[0];
+	if (this->_size > 0)
+	{
+		return this->_vector[0];
+	}
+	else
+	{
+		throw std::logic_error("Trying access to empty object!!!");
+	}
 }
 
 int & ivec::at(int index) 
@@ -266,3 +319,6 @@ ivec::~ivec()
 {
 	this->clear();
 }
+
+
+
