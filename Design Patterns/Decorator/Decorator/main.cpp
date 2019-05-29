@@ -19,6 +19,6 @@ int main(int argc,char** argv)
 	spPremium->ProtectionLevel();
 	std::cout << std::endl;
 
-	getchar();
+	getchar();		/// for keeping console in open
 	return 0;
 }
