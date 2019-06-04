@@ -110,11 +110,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Advanced.h" />
+    <ClInclude Include="ConcreteDecorator1.h" />
     <ClInclude Include="Basic.h" />
+    <ClInclude Include="ConcreteDecorator2.h" />
     <ClInclude Include="Decorator.h" />
     <ClInclude Include="Interface.h" />
-    <ClInclude Include="Premium.h" />
+    <ClInclude Include="ConcreteDecorator3.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

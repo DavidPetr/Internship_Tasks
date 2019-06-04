@@ -7,9 +7,9 @@ public:
 	AntiVirusDecorator(AntiVirus& decorator) :m_Decorator(decorator)
 	{}
 
-	virtual void ProtectionLevel() override
+	virtual void Protect() override
 	{
-		m_Decorator.ProtectionLevel();
+		m_Decorator.Protect();
 	}
 	virtual ~AntiVirusDecorator()
 	{

@@ -24,10 +24,16 @@
     <ClInclude Include="Decorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Advanced.h">
+    <ClInclude Include="ConcreteDecorator1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Premium.h">
+    <ClInclude Include="ConcreteDecorator2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteDecorator3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

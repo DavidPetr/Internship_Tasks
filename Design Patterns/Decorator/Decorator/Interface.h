@@ -6,7 +6,7 @@ class AntiVirus
 protected:
 	static int index;	/// for numbering 
 public:
-	virtual void ProtectionLevel() = 0;
+	virtual void Protect() = 0;
 	virtual ~AntiVirus()
 	{ 
 		std::cout << "Destructor of Interface" << std::endl; 

@@ -2,12 +2,17 @@
 #include "Interface.h"
 class Basic final :public AntiVirus
 {
+private:
+	void ScanMyPC()
+	{
+		std::cout << ++AntiVirus::index << ". ";
+		std::cout << "Scan my computer and delete viruses" << std::endl;
+	}
 public:
-	virtual void ProtectionLevel() override
+	virtual void Protect() override
 	{
 		AntiVirus::index = 0;
-		std::cout << ++AntiVirus::index << ". " << "Protect my computer" << std::endl;
-		std::cout << ++AntiVirus::index << ". " << "Keep me safe from attacks" << std::endl;
+		ScanMyPC();
 	}
 	virtual ~Basic()
 	{
