@@ -16,7 +16,7 @@ void MergeSort::merge(std::vector<int>& vector, int leftIndex, int middleIndex, 
 	int sizeOfFirstSequence = middleIndex - leftIndex + 1;
 	int sizeOfSecondSequence = rightIndex - middleIndex;
 
-	std::vector<int> L, R;
+	std::remove_reference<decltype(vector)>::type L, R;
 
 	for (i = 0; i < sizeOfFirstSequence; i++)
 	{
