@@ -11,7 +11,7 @@ protected:
 	std::vector<int> m_vector;
 
 protected:
-	void swap(int& a, int& b);
+	void swap(int& a, int& b) noexcept;
 
 private:	
 	virtual void sort(std::vector<int>& vector) = 0;

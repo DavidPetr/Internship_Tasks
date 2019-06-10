@@ -1,20 +1,39 @@
 #include "ConcreteStrategy1.h"
 
-BubleSort::BubleSort(std::vector<int> vector) : Strategy(vector)
+inline int leftSon(int& i)
+{
+	return (2 * i + 1);
+}
+inline int rightSon(int& i)
+{
+	return (2 * i + 1);
+}
+
+HeapSort::HeapSort(std::vector<int> vector) : Strategy(vector)
 {}
 
-void BubleSort::sort(std::vector<int>& vector)
+void HeapSort::sort(std::vector<int>& vector)
 {
-	std::cout << "Buble" << std::endl;
-
-	for (int i = 0;i < vector.size();++i)
+	std::cout << "HeapSort" << std::endl;
+	int vertex_count = vector.size();
+	while (vertex_count != 1)
 	{
-		for (int j = i + 1;j < vector.size();++j)
+		
+		for (int i = (vertex_count / 2) - 1; i >= 0; --i)
 		{
-			if (vector[i] < vector[j])
+			
+			if (leftSon(i) < vertex_count &&  vector[i] > vector[leftSon(i)] )
 			{
-				swap(vector[i], vector[j]);
+				swap(vector[i], vector[leftSon(i)]);
+			}
+			if (rightSon(i) < vertex_count && vector[i] > vector[rightSon(i)])
+			{
+				swap(vector[i], vector[rightSon(i)]);
 			}
 		}
+		swap(vector[0], vector[vertex_count - 1]);
+
+		--vertex_count;
 	}
 }
+

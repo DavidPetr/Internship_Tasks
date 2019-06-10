@@ -139,11 +139,11 @@ int main()
 
 int main(int argc, char** argv)
 {
-	std::vector<int> v{ 1,5,8,4,3,6,2,7,0,9 };
+	std::vector<int> v{ 1,5,8,4,3,6,2,7,0,9,10,11,12,13,14,15 };
 
-	BubleSort B(v);
+	HeapSort B(v);
 
-	SpStrategy spBuble = std::make_shared<BubleSort>(v);
+	SpStrategy spBuble = std::make_shared<HeapSort>(v);
 	SpStrategy spMerge = std::make_shared<MergeSort>(v);
 	SpStrategy spQuick = std::make_shared<QuickSort>(v);
 	

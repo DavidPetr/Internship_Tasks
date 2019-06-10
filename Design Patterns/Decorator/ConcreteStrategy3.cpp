@@ -6,7 +6,7 @@ QuickSort::QuickSort(std::vector<int> vector) : Strategy(vector)
 
 void QuickSort::sort(std::vector<int>& vector)
 {
-	std::cout << "Quick" << std::endl;
+	std::cout << "QuickSort" << std::endl;
 	quick(vector, 0, vector.size() - 1);
 }
 
